@@ -34,8 +34,9 @@ const App = ({ signOut }) => {
     event.preventDefault();
     const form = new FormData(event.target);
     const data = {
-      name: form.get("name"),
-      description: form.get("description"),
+      firstname: form.get("firstname"),
+      lastname: form.get("lastname"),
+      address: form.get("address"),
     };
     await API.graphql({
       query: createNoteMutation,
@@ -60,17 +61,25 @@ const App = ({ signOut }) => {
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
-            name="name"
-            placeholder="Note Name"
-            label="Note Name"
+            name="firstname"
+            placeholder="first Name"
+            label="First Name"
             labelHidden
             variation="quiet"
             required
           />
           <TextField
-            name="description"
-            placeholder="Note Description"
-            label="Note Description"
+            name="lastname"
+            placeholder="last Name"
+            label="Last Name"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="address"
+            placeholder="Address"
+            label="Address"
             labelHidden
             variation="quiet"
             required
@@ -84,15 +93,15 @@ const App = ({ signOut }) => {
       <View margin="3rem 0">
         {notes.map((note) => (
           <Flex
-            key={note.id || note.name}
+            key={note.id || note.firstname}
             direction="row"
             justifyContent="center"
             alignItems="center"
           >
             <Text as="strong" fontWeight={700}>
-              {note.name}
+              {note.firstname}
             </Text>
-            <Text as="span">{note.description}</Text>
+            <Text as="span">{note.address}</Text>
             <Button variation="link" onClick={() => deleteNote(note)}>
               Delete note
             </Button>
