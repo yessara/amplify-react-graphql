@@ -59,7 +59,7 @@ const App = ({ signOut }) => {
     <View className="App">
       <Heading level={1}>My Notes App</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
-        <Flex direction="column" justifyContent="center">
+        <Flex direction="column" justifyContent="left">
           <TextField
             name="firstname"
             placeholder="first Name"
